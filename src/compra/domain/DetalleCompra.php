@@ -17,6 +17,7 @@ class DetalleCompra {
         $this->costo = $costo;
     }
 
+
     public function getSku() : string {
         return $this->sku;
     }

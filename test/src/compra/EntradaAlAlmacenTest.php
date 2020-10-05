@@ -10,6 +10,28 @@ use src\shared\producto\domain\ProductoSimple;
 
 class EntradaAlAlmacenTest extends TestCase
 {
+
+    /*
+     *
+        Escenario:  entrada del producto incorrecta
+        HU 1. COMO USUARIO QUIERO REGISTRAR LA ENTRADA DE PRODUCTOS.
+        Criterio de Aceptación:
+        1.1 .La cantidad de la entrada debe ser mayor a 0.
+        Dado
+        El administrador tiene un producto: Nombre: Gaseosa litro costo: 2.000 precio: 5.000 tipo: Simple con inventario de ese producto en cero y una entrada de -10 unidades
+        Cuando
+        El administrador va a dar a entrada a un nuevo producto
+        Entonces
+        El sistema presentará la excepción NumeroInvalidaException.
+     */
+    public function testEntradaDelProductoIncorrecta() : void {
+        $producto =  new ProductoSimple('PROD-0001','Gaseosa Litro',3000,5000,'PREPARACION');
+        $inventario = [new Inventario($producto->getSku(), 0)];
+        $compra = new Compra('COMP-0001');
+        $compra->addDetalle('PROD-0001',-1,5000);
+        $this->expectException(\NumeroInvalidoException::class);
+    }
+
     /* * Escenario:  entrada del producto correcto.
         HU 1. COMO USUARIO QUIERO REGISTRAR LA ENTRADA PRODUCTOS
         Criterio de Aceptación:
@@ -32,4 +54,5 @@ class EntradaAlAlmacenTest extends TestCase
         $this->assertSame(5,$inventario[0]->getStock());
         $this->assertEquals('Las entradas de los productos se ha almacenando correctamente',$resultado);
     }
+
 }
