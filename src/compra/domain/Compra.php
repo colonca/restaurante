@@ -31,7 +31,7 @@ class Compra
             }
         }
 
-        return '';
+        return 'Las entradas de los productos se ha almacenando correctamente';
     }
 
 }

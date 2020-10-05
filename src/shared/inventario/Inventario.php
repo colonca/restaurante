@@ -19,6 +19,9 @@ class Inventario
          return $this->sku;
      }
 
+     public function getStock() : int {
+        return $this->stock;
+     }
 
      public function entrada(int $cantida) : void {
          $this->stock +=$cantida;
