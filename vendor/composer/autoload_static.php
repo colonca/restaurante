@@ -1128,6 +1128,7 @@ class ComposerStaticInitde155d3d82e29a3c057ca866aa000084
         'src\\compra\\domain\\Compra' => __DIR__ . '/../..' . '/src/compra/domain/Compra.php',
         'src\\compra\\domain\\DetalleCompra' => __DIR__ . '/../..' . '/src/compra/domain/DetalleCompra.php',
         'src\\compra\\domain\\ICompraRepository' => __DIR__ . '/../..' . '/src/compra/domain/ICompraRepository.php',
+        'src\\compra\\domain\\NumeroInvalidoException' => __DIR__ . '/../..' . '/src/compra/domain/NumeroInvalidoException.php',
         'src\\shared\\inventario\\Inventario' => __DIR__ . '/../..' . '/src/shared/inventario/Inventario.php',
         'src\\shared\\producto\\domain\\Producto' => __DIR__ . '/../..' . '/src/shared/producto/domain/Producto.php',
         'src\\shared\\producto\\domain\\ProductoSimple' => __DIR__ . '/../..' . '/src/shared/producto/domain/ProductoSimple.php',

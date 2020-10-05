@@ -1047,6 +1047,7 @@ return array(
     'src\\compra\\domain\\Compra' => $baseDir . '/src/compra/domain/Compra.php',
     'src\\compra\\domain\\DetalleCompra' => $baseDir . '/src/compra/domain/DetalleCompra.php',
     'src\\compra\\domain\\ICompraRepository' => $baseDir . '/src/compra/domain/ICompraRepository.php',
+    'src\\compra\\domain\\NumeroInvalidoException' => $baseDir . '/src/compra/domain/NumeroInvalidoException.php',
     'src\\shared\\inventario\\Inventario' => $baseDir . '/src/shared/inventario/Inventario.php',
     'src\\shared\\producto\\domain\\Producto' => $baseDir . '/src/shared/producto/domain/Producto.php',
     'src\\shared\\producto\\domain\\ProductoSimple' => $baseDir . '/src/shared/producto/domain/ProductoSimple.php',

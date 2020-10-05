@@ -5,6 +5,7 @@ namespace test\src\compra;
 
 use PHPUnit\Framework\TestCase;
 use src\compra\domain\Compra;
+use src\compra\domain\NumeroInvalidoException;
 use src\shared\inventario\Inventario;
 use src\shared\producto\domain\ProductoSimple;
 
@@ -25,11 +26,13 @@ class EntradaAlAlmacenTest extends TestCase
         El sistema presentará la excepción NumeroInvalidaException.
      */
     public function testEntradaDelProductoIncorrecta() : void {
+        $this->expectException(NumeroInvalidoException::class);
         $producto =  new ProductoSimple('PROD-0001','Gaseosa Litro',3000,5000,'PREPARACION');
         $inventario = [new Inventario($producto->getSku(), 0)];
         $compra = new Compra('COMP-0001');
         $compra->addDetalle('PROD-0001',-1,5000);
-        $this->expectException(\NumeroInvalidoException::class);
+        $this->assertSame(-1,$inventario[0]->getStock());
+        $this->assertEquals('Las entradas de los productos se ha almacenando correctamente',$resultado);
     }
 
     /* * Escenario:  entrada del producto correcto.
