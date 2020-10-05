@@ -1,13 +1,17 @@
 <?php
 
-namespace test\src\inventario\compras;
+namespace test\src\compra;
 
-use Monolog\Test\TestCase;
+
+use PHPUnit\Framework\TestCase;
+use src\compra\domain\Compra;
+use src\shared\inventario\Inventario;
+use src\shared\producto\domain\ProductoSimple;
 
 class EntradaAlAlmacenTest extends TestCase
 {
     /* * Escenario:  entrada del producto correcto.
-        HU 1. Como administrador quiero registrar productos
+        HU 1. COMO USUARIO QUIERO REGISTRAR LA ENTRADA PRODUCTOS
         Criterio de Aceptación:
         1.1. La cantidad de la entrada debe ser mayor a 0.
         1.2. La cantidad de la entrada se le aumentará a la cantidad existente del producto.
@@ -19,10 +23,12 @@ class EntradaAlAlmacenTest extends TestCase
         Entonces El sistema aumentará el stock del  producto en el inventario AND
         El sistema presentará el mensaje. “El Producto “Gaseosa litro” ha sido registrado correctamente la cantidad en stock es de 5 unidades”
      */
-       public function testEntradaDelProductoCorrecto() : void {
-           $producto =  new ProductoSimple('PROD-0001','Gaseosa Litro',new Tipo_producto('PREPARACION'));
-           $compra = new Compra('COMP-0001',new Inventario($producto,0));
-           $resultado =  $compra->addDetalle($producto,5,5000);
-           $this->assertEquals('El Producto Gaseosa litro ha sido registrado correctamente la cantidad en stock es de 5 unidades',$resultado);
-       }
+    public function testEntradaDelProductoCorrecto() : void {
+        $producto =  new ProductoSimple('PROD-0001','Gaseosa Litro',3000,5000,'PREPARACION');
+        $inventario = [new Inventario($producto->getSku(), 0)];
+        $compra = new Compra('COMP-0001');
+        $compra->addDetalle('PROD-0001',5,5000);
+        $resultado = $compra->darDeAlta($inventario);
+        $this->assertEquals('Las entradas de los productos se ha almacenando correctamente',$resultado);
+    }
 }
