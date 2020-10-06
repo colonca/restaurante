@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace src\venta\domain;
 
+use src\shared\producto\domain\ProductoCompuesto;
 use src\shared\producto\domain\ProductoSimple;
 
 class Factura {
@@ -15,8 +16,8 @@ class Factura {
     {
         $this->numeroFactura = $numeroFactura;
     }
-    public function addDetalle(ProductoSimple $simple, int $cantidad, float $precioUnitario){
-        $detalle = new FacturaDetalle($simple,$cantidad,$precioUnitario);
+    public function addDetalle(?ProductoSimple $simple,?ProductoCompuesto $compuesto, int $cantidad, float $precioUnitario){
+        $detalle = new FacturaDetalle($simple,$compuesto,$cantidad,$precioUnitario);
         $this->facturasdetalles[] = $detalle;
     }
 
@@ -35,10 +36,38 @@ class Factura {
     }
 
     public function facturar(array $inventario) : string {
+
             foreach ($this->facturasdetalles  as $detalle){
-                foreach ($inventario  as $item){
-                    if($item->getSku() == $detalle->getSku()){
-                        $item->salida($detalle->getCantidad());
+                if($detalle->getProductoSimple() != null){
+                    foreach ($inventario as $item){
+                        if($item->getSku() == $detalle->getSku()){
+                            $item->salida($detalle->getCantidad());
+                            break;
+                        }
+                    }
+                }else{
+
+                    $productoCompuesto = $detalle->getProdcutoCompuestos();
+
+                    foreach ($productoCompuesto->getProductos() as $producto){
+                        $ingredientes = $producto->getIngredientes();
+                        foreach ($ingredientes as $ingrediente){
+                            foreach ($inventario as $item){
+                                if($item->getSku() == $ingrediente->getSku()){
+                                    $item->salida($detalle->getCantidad());
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    foreach ($productoCompuesto->getIngredientes() as $ingrediente){
+                        foreach ($inventario as $item){
+                            if($item->getSku() == $ingrediente->getSku()){
+                                $item->salida($detalle->getCantidad());
+                                break;
+                            }
+                        }
                     }
                 }
             }
