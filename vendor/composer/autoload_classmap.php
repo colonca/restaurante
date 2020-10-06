@@ -1053,4 +1053,5 @@ return array(
     'src\\shared\\producto\\domain\\ProductoSimple' => $baseDir . '/src/shared/producto/domain/ProductoSimple.php',
     'src\\shared\\producto\\domain\\TipoProducto' => $baseDir . '/src/shared/producto/domain/TipoProducto.php',
     'test\\src\\compra\\EntradaAlAlmacenTest' => $baseDir . '/test/src/compra/EntradaAlAlmacenTest.php',
+    'test\\src\\venta\\domain\\SalidaDelAlmacenTest' => $baseDir . '/test/src/venta/domain/SalidaDelAlmacen.php',
 );

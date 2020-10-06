@@ -1134,6 +1134,7 @@ class ComposerStaticInitde155d3d82e29a3c057ca866aa000084
         'src\\shared\\producto\\domain\\ProductoSimple' => __DIR__ . '/../..' . '/src/shared/producto/domain/ProductoSimple.php',
         'src\\shared\\producto\\domain\\TipoProducto' => __DIR__ . '/../..' . '/src/shared/producto/domain/TipoProducto.php',
         'test\\src\\compra\\EntradaAlAlmacenTest' => __DIR__ . '/../..' . '/test/src/compra/EntradaAlAlmacenTest.php',
+        'test\\src\\venta\\domain\\SalidaDelAlmacenTest' => __DIR__ . '/../..',
     );
 
     public static function getInitializer(ClassLoader $loader)

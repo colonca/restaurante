@@ -9,7 +9,7 @@ use src\venta\domain\NumeroInvalidoException;
 use src\shared\inventario\Inventario;
 use src\shared\producto\domain\ProductoSimple;
 
-class SalidaDelAlmacen extends TestCase
+class SalidaDelAlmacenTest extends TestCase
 {
 
     /*
