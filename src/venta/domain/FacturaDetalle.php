@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace src\venta\domain;
 
+use src\shared\producto\domain\ProductoSimple;
+
 class FacturaDetalle {
 
-    private $codigo;
-    private $nombre;
+    private $productoSimple;
     private $cantidad;
     private $precioUnitario;
 
 
-    public function __construct(string $codigo,int $cantidad, float $precioUnitario)
+    public function __construct(ProductoSimple $productoSimple,int $cantidad, float $precioUnitario)
     {
-        $this->codigo = $codigo;
+        $this->productoSimple = $productoSimple;
         self::setCantidad($cantidad);
         self::setPrecio($precioUnitario);
     }
@@ -29,6 +30,9 @@ class FacturaDetalle {
 
     }
 
+    public function getCantidad() : int {
+        return $this->cantidad;
+    }
 
     public function setCantidad(int $cantidad): void{
 
@@ -38,6 +42,10 @@ class FacturaDetalle {
 
         $this->cantidad = $cantidad;
 
+    }
+
+    public function getSku():string {
+        return $this->productoSimple->getSku();
     }
 
     public function subTotal() : float{

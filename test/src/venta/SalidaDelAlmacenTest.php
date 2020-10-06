@@ -31,7 +31,7 @@ class SalidaDelAlmacenTest extends TestCase
           $producto = new ProductoSimple('PROD-0001','GASEOSA LITRO',3000,5000,'VENTA-DIRECTA');
           $inventario = [new Inventario($producto->getSku(), 10)];
           $factura = new Factura('VENT-0001');
-          $factura->addDetalle('PROD-0001',-5, 5000);
+          $factura->addDetalle($producto,-5, 5000);
       }
 
       /*
@@ -52,7 +52,7 @@ class SalidaDelAlmacenTest extends TestCase
             $producto = new ProductoSimple('PROD-0001','GASEOSA LITRO',3000,5000,'VENTA-DIRECTA');
             $inventario = [new Inventario($producto->getSku(), 10)];
             $factura = new Factura('VENT-0001');
-            $factura->addDetalle($producto,null,2, 5000);
+            $factura->addDetalle($producto,2, 5000);
             $resultado = $factura->facturar($inventario);
             $this->assertSame(8,$inventario[0]->getStock());
             $this->assertEquals('Las salidas de los productos se ha almacenado correctamente',$resultado);
