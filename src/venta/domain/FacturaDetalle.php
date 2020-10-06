@@ -11,6 +11,7 @@ class FacturaDetalle {
     private $cantidad;
     private $precioUnitario;
 
+
     public function __construct(string $codigo,int $cantidad, float $precioUnitario)
     {
         $this->codigo = $codigo;
