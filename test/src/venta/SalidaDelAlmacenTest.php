@@ -5,6 +5,7 @@ namespace test\src\venta\domain;
 
 
 use PHPUnit\Framework\TestCase;
+use src\venta\domain\Factura;
 use src\venta\domain\NumeroInvalidoException;
 use src\shared\inventario\Inventario;
 use src\shared\producto\domain\ProductoSimple;
