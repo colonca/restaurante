@@ -57,4 +57,36 @@ class SalidaDelAlmacenTest extends TestCase
             $this->assertSame(8,$inventario[0]->getStock());
             $this->assertEquals('Las salidas de los productos se ha almacenado correctamente',$resultado);
         }
+
+        /*
+         *
+            Escenario:  venta de un producto compuesto
+            HU 2. COMO USUARIO QUIERO REGISTRAR LA SALIDA PRODUCTOS
+            Criterio de Aceptación:
+            1.1. La cantidad de la salida de debe ser mayor a 0
+            1.2. En caso de un producto sencillo la cantidad de la salida se le disminuirá a la cantidad existente del producto.
+            1.3. En caso de un producto compuesto la cantidad de la salida se le disminuirá a la cantidad existente de cada uno de su ingrediente.
+            Dado
+            Un perro sencillo (ingredientes: un pan para perros, una salchicha, una lámina de queso) precio:  5.000.
+            Cuando
+            va a realizar una venta de 1 perro sencillo
+            Entonces
+            El sistema disminuye el stock de los ingredientes  en el inventario AND  El sistema presentará el mensaje. “Las salidas de los productos se ha almacenado correctamente”
+         */
+
+          public function testVentaDeUnProductoCompuesto() : void {
+              $producto1 = new ProductoSimple('PROD-0001','SALCHICHA',1000,1000,'PREPARACION');
+              $producto2 = new ProductoSimple('PROD-0002','PAN PARA PERRO',1000,1000,'PREPARACION');
+              $producto3 = new ProductoSimple('PROD-0003','LAMINA DE QUESO',1000,1000,'PREPARACION');
+              $inventario = [new Inventario($producto1->getSku(), 10),new Inventario($producto2->getSku(), 10),new Inventario($producto3->getSku(), 10)];
+              $productoCompuesto = new ProductoCompuesto('PROD-0004','PERRO SENCILLO',5000);
+              $productoCompuesto->addIngrediente($producto1);
+              $productoCompuesto->addIngrediente($producto2);
+              $productoCompuesto->addIngrediente($producto3);
+              $factura = new Factura('VENT-0001');
+              $factura->addDetalle(null,$productoCompuesto,2, $productoCompuesto->getCOmp);
+              $resultado = $factura->facturar($inventario);
+              $this->assertSame([9,9,9],[$inventario[0]->getStock(),$inventario[1]->getStock(),$inventario[2]->getStock()]);
+              $this->assertEquals('Las salidas de los productos se ha almacenado correctamente',$resultado);
+          }
 }
