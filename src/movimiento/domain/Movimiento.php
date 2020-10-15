@@ -19,6 +19,11 @@ class Movimiento
        $this->detalle_movimiento[] = $detalle;
    }
 
+   public function salida(ProductoSimple $producto, int $cantidad, float $costo,float $precio) : void {
+        $detalle = new Detalle_Movimiento($producto->getSku(),$cantidad,$costo,$precio,'SALIDA');
+        $this->detalle_movimiento[] = $detalle;
+   }
+
    public function getCantidad(string $sku) : int {
       $entradas = 0;
       foreach($this->detalle_movimiento as $value){
