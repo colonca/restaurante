@@ -1125,16 +1125,11 @@ class ComposerStaticInitde155d3d82e29a3c057ca866aa000084
         'phpDocumentor\\Reflection\\Types\\This' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/This.php',
         'phpDocumentor\\Reflection\\Types\\Void_' => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src/Types/Void_.php',
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
-        'src\\compra\\domain\\Compra' => __DIR__ . '/../..' . '/src/compra/domain/Compra.php',
-        'src\\compra\\domain\\DetalleCompra' => __DIR__ . '/../..' . '/src/compra/domain/DetalleCompra.php',
-        'src\\compra\\domain\\ICompraRepository' => __DIR__ . '/../..' . '/src/compra/domain/ICompraRepository.php',
-        'src\\compra\\domain\\NumeroInvalidoException' => __DIR__ . '/../..' . '/src/compra/domain/NumeroInvalidoException.php',
-        'src\\shared\\inventario\\Inventario' => __DIR__ . '/../..' . '/src/shared/inventario/Inventario.php',
-        'src\\shared\\producto\\domain\\Producto' => __DIR__ . '/../..' . '/src/shared/producto/domain/Producto.php',
-        'src\\shared\\producto\\domain\\ProductoSimple' => __DIR__ . '/../..' . '/src/shared/producto/domain/ProductoSimple.php',
-        'src\\shared\\producto\\domain\\TipoProducto' => __DIR__ . '/../..' . '/src/shared/producto/domain/TipoProducto.php',
-        'test\\src\\compra\\EntradaAlAlmacenTest' => __DIR__ . '/../..' . '/test/src/compra/EntradaAlAlmacenTest.php',
-        'test\\src\\venta\\domain\\SalidaDelAlmacenTest' => __DIR__ . '/../..',
+        'src\\movimiento\\domain\\Movimiento' => __DIR__ . '/../..' . '/src/movimiento/domain/Movimiento.php',
+        'src\\producto\\domain\\Producto' => __DIR__ . '/../..' . '/src/producto/domain/Producto.php',
+        'src\\producto\\domain\\ProductoCompuesto' => __DIR__ . '/../..' . '/src/producto/domain/ProductoCompuesto.php',
+        'src\\producto\\domain\\ProductoSimple' => __DIR__ . '/../..' . '/src/producto/domain/ProductoSimple.php',
+        'test\\src\\movimieto\\domain\\MoviemientoTest' => __DIR__ . '/../..' . '/test/src/movimieto/domain/MoviemientoTest.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
