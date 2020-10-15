@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src\shared\producto\domain;
+namespace src\producto\domain;
 
 abstract class Producto {
 
@@ -17,6 +17,10 @@ abstract class Producto {
         $this->nombre = $nombre;
         $this->costo = $costo;
         $this->precio = $precio;
+    }
+
+    protected function  equal(Producto $producto) : bool {
+        return self::getSku() == $producto->getSku();
     }
 
     public function getSku(): string

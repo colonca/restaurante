@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace src\shared\producto\domain;
-
-use src\shared\producto\domain\Producto;
+namespace src\producto\domain;
 
 class ProductoCompuesto extends Producto {
 
@@ -16,7 +14,20 @@ class ProductoCompuesto extends Producto {
           parent::__construct($sku, $nombre, 0, $precio);
       }
 
-      public function addProducto(ProductoCompuesto $producto) {
+      public function getCosto():float
+      {
+          $costo = 0;
+
+         foreach ($this->ingredientes as $value){
+            $costo += $value->getCosto();
+         }
+         foreach ($this->productos as $value){
+             $costo += $value->getCosto();
+         }
+         return $costo;
+      }
+
+    public function addProducto(ProductoCompuesto $producto) {
           $this->productos[] = $producto;
       }
 
@@ -28,7 +39,7 @@ class ProductoCompuesto extends Producto {
           return $this->ingredientes;
       }
 
-    public function getProductos(){
-        return $this->productos;
-    }
+     public function getProductos(){
+         return $this->productos;
+     }
 }
